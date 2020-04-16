@@ -12,24 +12,24 @@ cons.lambda_min = max(2*cons.A*P_min + cons.B); %To find the minimum possible la
 cons.lambda_max = min(2*cons.A*P_max + cons.B); %To find the maximum possible lambda value for generators
 %==========================================================================
 %GA INITIALIZATION
-pop_size = 50;      %Population size of 50 chromosomes.
-chrom_size = 8;     %Each chromosome has 4 genes. 4 genes for decimal values.
-pop_data = [];      %This array contains decimal value of chromosome, fitness value, probbailty of selection
-                    %and position in roulette wheel.
-child_pop = [];     %Child population at the end of every generation.
-parent_pop = [];    %Parent population at the start of every generation.
-error_lim = 0.001;  % 0.001% error in power demand.
-                    %To stop GA when this accuracy is achieved.
+pop_size = 50;                                  %Population size of 50 chromosomes.
+chrom_size = 8;                                 %Each chromosome has 4 genes. 4 genes for decimal values.
+pop_data = [];                                  %This array contains decimal value of chromosome, fitness value, probbailty of selection
+                                                %and position in roulette wheel.
+child_pop = [];                                 %Child population at the end of every generation.
+parent_pop = [];                                %Parent population at the start of every generation.
+error_lim = 0.001;                              % 0.001% error in power demand.
+                                                %To stop GA when this accuracy is achieved.
 
 %Initialization of parent population.                    
 parent_pop = round(rand(pop_size, chrom_size)); 
 pop_data = [pop_data parent_pop];
 %==========================================================================
 %GA Parameters
-param.c_prob = 0.2;     %Crossover Probability
-param.m_prob = 0.1;     %Mutation Probability
-param.e_prob = 0.06;    %Elitism Probabilty
-param.max_gen = 100;    %Maximum number of generations
+param.c_prob = 0.2;                             %Crossover Probability
+param.m_prob = 0.1;                             %Mutation Probability
+param.e_prob = 0.06;                            %Elitism Probabilty
+param.max_gen = 100;                            %Maximum number of generations
 %==========================================================================
 %GA Loop
 for i = 1:param.max_gen
