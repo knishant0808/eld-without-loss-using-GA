@@ -10,7 +10,7 @@ end
 power_gen = (lambda - cons.B)./(2*cons.A);
 tot_power = sum(power_gen, 1);
 error = abs(cons.Pd - tot_power);
-fitness = 1/(1 + error);
+fitness = 1./(1 + error);
 cost = sum((power_gen.^2).*cons.A + (power_gen.*cons.B), 2);
 end
 
