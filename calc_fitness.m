@@ -1,5 +1,5 @@
 function [fitness, error, cost] = calc_fitness(pop_data, cons)
-lambda = pop_data(:, 9);
+lambda = pop_data(:, 13);
 for i = 1;length(lambda)
     if lambda(i) < cons.lambda_min
         lambda(i) = cons.lambda_min;
