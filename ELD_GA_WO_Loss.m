@@ -46,8 +46,9 @@ for i = 1:param.max_gen
     
     %Sorting population based on fitness value in descending order
     pop_data = sort_data(pop_data);
+    %Check for accuracy in calculation
     %Exiting loop if error is within acceptable limits
-    if pop_data(1,11) <= error_lim
+    if pop_data(1,15) <= error_lim
         break;
     end
     
@@ -70,7 +71,7 @@ for i = 1:param.max_gen
     [selected_pop, temp_data] = mutate(temp_data, param.m_prob, chrom_size);
     pop_data = [pop_data; selected_pop; temp_data];
      
-    %Check for accuracy in calculation
+    
     child_pop = pop_data(:, 1:8);
     pop_data = child_pop;
 end
