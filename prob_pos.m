@@ -1,6 +1,6 @@
 function [prob, pos_start, pos_end] = prob_pos(pop_data)
-tot_fitness = sum(pop_data(:, 10);
-prob = pop_data(:, 10)/tot_fitness; %Calculating probability of outcome based on fitness
+tot_fitness = sum(pop_data(:, 14);
+prob = pop_data(:, 14)/tot_fitness; %Calculating probability of outcome based on fitness
 
 start = 0;
 for k = 1:length(pop_data, 1);
