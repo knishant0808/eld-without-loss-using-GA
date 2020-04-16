@@ -14,7 +14,7 @@ cons.lambda_max = min(2*cons.A*P_max + cons.B); %To find the maximum possible la
 %GA INITIALIZATION
 pop_size = 50;                                  %Population size of 50 chromosomes.
 chrom_size = 12;                                %Each chromosome has 12 genes. 8 genes for decimal values.
-pop_data = [];                                  %This array contains decimal value of chromosome, fitness value, probbailty of selection
+pop_data = [];                                  %This array contains decimal value of chromosome, fitness value, probabilty of selection
                                                 %and position in roulette wheel.
 child_pop = [];                                 %Child population at the end of every generation.
 parent_pop = [];                                %Parent population at the start of every generation.
