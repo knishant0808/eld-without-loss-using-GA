@@ -8,8 +8,8 @@ cons.B = [2 1.8 2.5];
 cons.C = [1200 950 1320];
 cons.P_min = [80 100 80];                       %Min power generation by the plants.
 cons.P_max = [250 200 300];                     %Min power generation by the plants.
-cons.lambda_min = max(2*cons.A*P_min + cons.B); %To find the minimum possible lambda value for generators
-cons.lambda_max = min(2*cons.A*P_max + cons.B); %To find the maximum possible lambda value for generators
+cons.lambda_min = max(2*cons.A.*cons.P_min + cons.B); %To find the minimum possible lambda value for generators
+cons.lambda_max = min(2*cons.A.*cons.P_max + cons.B); %To find the maximum possible lambda value for generators
 %==========================================================================
 %GA INITIALIZATION
 pop_size = 50;                                  %Population size of 50 chromosomes.
@@ -40,7 +40,7 @@ for i = 1:param.max_gen
     pop_data = [pop_data dec_value]; 
     
     %Calculating Fitness
-    [fitness, error, cost] = calc_fitess(pop_data, cons);
+    [fitness, error, cost] = calc_fitness(pop_data, cons);
     %Appending fitness, error and cost to pop_data
     pop_data = [pop_data fitness error cost];             
     
@@ -76,8 +76,17 @@ for i = 1:param.max_gen
     pop_data = child_pop;
 end
 %==========================================================================
-lambda = bin_to_dec(pop_data(1,:);
-pg1 = 
-pg2 = 
-pg3 = 
+lambda = bin_to_dec(pop_data(1,:));
+pg1 = (lambda - cons.B(1))./(2*cons.A(1));
+disp('pg1 = ');
+disp(pg1);
+pg2 = (lambda - cons.B(2))./(2*cons.A(2));
+disp('\npg2 = ');
+disp(pg2);
+pg3 = (lambda - cons.B(3))./(2*cons.A(3));
+disp('\npg3 = ');
+disp(pg3);
+tot_power = pg1 + pg2 + pg3;
+disp('\nTotal_power = ');
+disp(tot_power);
     
