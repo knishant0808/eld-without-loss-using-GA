@@ -2,7 +2,7 @@ clc;
 clear all;
 %==========================================================================
 %ELD DATA AND CONSTRAINTS
-cons.Pd = 600;                                  %Total power demand.
+cons.Pd = 500;                                  %Total power demand.
 cons.A = [0.008 0.007 0.0085];                 %A, B and C are fuel cost coefficient.
 cons.B = [2.1 2.5 1.8];
 cons.C = [1200 950 1320];
@@ -13,7 +13,7 @@ cons.lambda_max = min(2*cons.A.*cons.P_max + cons.B); %To find the maximum possi
 %==========================================================================
 %GA INITIALIZATION
 pop_size = 50;                                  %Population size of 50 chromosomes.
-chrom_size = 15;                                %Each chromosome has 18 genes. 11 genes for decimal values.
+chrom_size = 12;                                %Each chromosome has 18 genes. 11 genes for decimal values.
 pop_data = [];                                  %This array contains decimal value of chromosome, fitness value, probabilty of selection
                                                 %and position in roulette wheel.
 child_pop = [];                                 %Child population at the end of every generation.
