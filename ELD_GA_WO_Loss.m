@@ -2,9 +2,9 @@ clc;
 clear all;
 %==========================================================================
 %ELD DATA AND CONSTRAINTS
-cons.Pd = 500;                                  %Total power demand.
+cons.Pd = 600;                                  %Total power demand.
 cons.A = [0.008 0.0075 0.0065];                 %A, B and C are fuel cost coefficient.
-cons.B = [2 1.8 2.5];
+cons.B = [2 2.8 1.8];
 cons.C = [1200 950 1320];
 cons.P_min = [80 100 80];                       %Min power generation by the plants.
 cons.P_max = [250 200 300];                     %Min power generation by the plants.
@@ -12,7 +12,7 @@ cons.lambda_min = max(2*cons.A.*cons.P_min + cons.B); %To find the minimum possi
 cons.lambda_max = min(2*cons.A.*cons.P_max + cons.B); %To find the maximum possible lambda value for generators
 %==========================================================================
 %GA INITIALIZATION
-pop_size = 50;                                  %Population size of 50 chromosomes.
+pop_size = 50;;                                  %Population size of 50 chromosomes.
 chrom_size = 12;                                %Each chromosome has 12 genes. 8 genes for decimal values.
 pop_data = [];                                  %This array contains decimal value of chromosome, fitness value, probabilty of selection
                                                 %and position in roulette wheel.
@@ -48,14 +48,14 @@ for i = 1:param.max_gen
     pop_data = sort_data(pop_data);
     %Check for accuracy in calculation
     %Exiting loop if error is within acceptable limits
-    if pop_data(1,15) <= error_lim
-        break;
-    end
-    
+     if pop_data(1,15) <= error_lim
+         break;
+     end
+     
     %Probabilty of selection and roulette wheel position
     [prob, pos_start, pos_end] = prob_pos(pop_data);
     %Appending probabilty, start and end position on roulette wheel
-    pop_data = [pop_data prob pos_start pop_end];   
+    pop_data = [pop_data prob pos_start pos_end];   
     
     temp_data = pop_data;
     
@@ -69,14 +69,14 @@ for i = 1:param.max_gen
     
     %Mutation based on roulette wheel selection
     [selected_pop, temp_data] = mutate(temp_data, param.m_prob, chrom_size);
-    pop_data = [pop_data; selected_pop; temp_data];
-     
+    temp_data = sort_data(temp_data);
+    pop_data = [pop_data; selected_pop; temp_data(5:end, :)];     
     
-    child_pop = pop_data(:, 1:8);
+    child_pop = pop_data(:, 1:12);
     pop_data = child_pop;
 end
 %==========================================================================
-lambda = bin_to_dec(pop_data(1,:));
+lambda = bin_to_dec(pop_data(4,:));
 pg1 = (lambda - cons.B(1))./(2*cons.A(1));
 disp('pg1 = ');
 disp(pg1);
