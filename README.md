@@ -1,6 +1,6 @@
 # eld-without-loss-using-GA
-Economic Load Dispatch using Genetic Algorithm
-Every generator in power system has some constraints attached to its operation. To supply the power demand the generators are needed to operate in most cost efficient way.
+Economic Load Dispatch using Genetic Algorithm.
+Every generator in power system has some constraints attached to its operation. To supply the power demand the generators are needed to operate in most cost efficient way. The transmission losses are not taken into consideration.
 
 Our system has three generators with minimum and maximum power constraints.
 Cost equation of generation-
