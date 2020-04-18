@@ -2,18 +2,18 @@ clc;
 clear all;
 %==========================================================================
 %ELD DATA AND CONSTRAINTS
-cons.Pd = 500;                                  %Total power demand.
-cons.A = [0.008 0.007 0.0085];                 %A, B and C are fuel cost coefficient.
-cons.B = [2.1 2.5 1.8];
+cons.Pd = 680;                                          %Total power demand.
+cons.A = [0.009 0.0085 0.0085];                         %A, B and C are fuel cost coefficient.
+cons.B = [2.1 2.8 1.8];
 cons.C = [1200 950 1320];
-cons.P_min = [80 100 80];                       %Min power generation by the plants.
-cons.P_max = [250 200 300];                     %Min power generation by the plants.
-cons.lambda_min = max(2*cons.A.*cons.P_min + cons.B); %To find the minimum possible lambda value for generators
-cons.lambda_max = min(2*cons.A.*cons.P_max + cons.B); %To find the maximum possible lambda value for generators
+cons.P_min = [80 100 80];                               %Min power generation by the plants.
+cons.P_max = [250 200 300];                             %Min power generation by the plants.
+cons.lambda_min = max(2*cons.A.*cons.P_min + cons.B);   %To find the minimum possible lambda value for generators
+cons.lambda_max = min(2*cons.A.*cons.P_max + cons.B);   %To find the maximum possible lambda value for generators
 %==========================================================================
 %GA INITIALIZATION
 pop_size = 50;                                  %Population size of 50 chromosomes.
-chrom_size = 12;                                %Each chromosome has 18 genes. 11 genes for decimal values.
+chrom_size = 15;                                %Each chromosome has 15 genes. 11 genes for decimal values.
 pop_data = [];                                  %This array contains decimal value of chromosome, fitness value, probabilty of selection
                                                 %and position in roulette wheel.
 child_pop = [];                                 %Child population at the end of every generation.
@@ -27,7 +27,7 @@ pop_data = [pop_data parent_pop];
 param.c_prob = 0.2;                             %Crossover Probability
 param.m_prob = 0.1;                             %Mutation Probability
 param.e_prob = 0.06;                            %Elitism Probabilty
-param.max_gen = 50;                            %Maximum number of generations
+param.max_gen = 100;                            %Maximum number of generations
 %==========================================================================
 %GA Loop
 best_sol = [];
