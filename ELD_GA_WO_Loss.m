@@ -2,7 +2,7 @@ clc;
 clear all;
 %==========================================================================
 %ELD DATA AND CONSTRAINTS
-cons.Pd = 680;                                          %Total power demand.
+cons.Pd = 555;                                          %Total power demand.
 cons.A = [0.009 0.0085 0.0085];                         %A, B and C are fuel cost coefficient.
 cons.B = [2.1 2.8 1.8];
 cons.C = [1200 950 1320];
@@ -27,7 +27,7 @@ pop_data = [pop_data parent_pop];
 param.c_prob = 0.2;                             %Crossover Probability
 param.m_prob = 0.1;                             %Mutation Probability
 param.e_prob = 0.06;                            %Elitism Probabilty
-param.max_gen = 100;                            %Maximum number of generations
+param.max_gen = 50;                            %Maximum number of generations
 %==========================================================================
 %GA Loop
 best_sol = [];
